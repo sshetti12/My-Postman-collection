@@ -1,0 +1,765 @@
+{
+	"info": {
+		"_postman_id": "f3d6a964-91f2-4c93-b926-ef66161f5e59",
+		"name": "New Cross Connect Charges and IB Asset",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lookup active cross connect subscription by customer and location",
+			"id": "d56cadb1-2c80-4f2d-9e91-5c0c8d0d6481",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "REST-Framework-Version",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptions?q=(CustomerLocation_c='150-C143350' and Status='ORA_Active' and Location_c='DFW010') and SubscriptionNumber like '%XC%' &onlyData=true&fields=SubscriptionId,SubscriptionNumber,BusinessUnitId,BusinessUnitName,LegalEntityId,LegalEntityName,SubscriptionProfileId,SubscriptionProfileName,PrimaryPartyId,StartDate,Status",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptions"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "(CustomerLocation_c='150-C143350' and Status='ORA_Active' and Location_c='DFW010') and SubscriptionNumber like '%XC%' ",
+							"description": "or draft (to verify subscription manager)"
+						},
+						{
+							"key": "onlyData",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "fields",
+							"value": "SubscriptionId,SubscriptionNumber,BusinessUnitId,BusinessUnitName,LegalEntityId,LegalEntityName,SubscriptionProfileId,SubscriptionProfileName,PrimaryPartyId,StartDate,Status",
+							"type": "text"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "a6b3eccd-d083-45ff-a50b-b8459055431a",
+					"name": "Lookup active cross connect subscription by customer and location",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "REST-Framework-Version",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptions?q=(CustomerLocation_c='020-C100445' and Status='ORA_Active' and Location_c='ATL013') and SubscriptionNumber like '%XC%'&onlyData=true&fields=SubscriptionId,SubscriptionNumber,BusinessUnitId,BusinessUnitName,LegalEntityId,LegalEntityName,SubscriptionProfileId,SubscriptionProfileName,PrimaryPartyId,StartDate,Status",
+							"host": [
+								"{{siteURL}}"
+							],
+							"path": [
+								"crmRestApi",
+								"resources",
+								"latest",
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "(CustomerLocation_c='020-C100445' and Status='ORA_Active' and Location_c='ATL013') and SubscriptionNumber like '%XC%'",
+									"description": "or draft (to verify subscription manager)"
+								},
+								{
+									"key": "onlyData",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "fields",
+									"value": "SubscriptionId,SubscriptionNumber,BusinessUnitId,BusinessUnitName,LegalEntityId,LegalEntityName,SubscriptionProfileId,SubscriptionProfileName,PrimaryPartyId,StartDate,Status",
+									"type": "text"
+								},
+								{
+									"key": "REST-Framework-Version",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.oracle.adf.resourcecollection+json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "457"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Location",
+							"value": ""
+						},
+						{
+							"key": "X-ORACLE-DMS-RID",
+							"value": "0:5"
+						},
+						{
+							"key": "Link",
+							"value": "<https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions>;rel=\"self\";kind=\"collection\";name=\"subscriptions\""
+						},
+						{
+							"key": "X-ORACLE-DMS-ECID",
+							"value": "005z5n1o4UyBHBVpq0O5yY00071k0000ZG"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "REST-Framework-Version",
+							"value": "2"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 May 2023 13:56:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "AKGRN",
+							"value": "0.946adc17.1684850201.15c22bce"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"items\": [\n        {\n            \"SubscriptionId\": 300000663766616,\n            \"SubscriptionNumber\": \"020-C100445_0200_XC\",\n            \"BusinessUnitId\": 300000005793193,\n            \"BusinessUnitName\": \"United_States_BU\",\n            \"LegalEntityId\": 300000356116885,\n            \"LegalEntityName\": \"Colo Properties Atlanta, LLC\",\n            \"SubscriptionProfileId\": 300000376076235,\n            \"SubscriptionProfileName\": \"DLR Monthly Calendar Month-to-Month\",\n            \"PrimaryPartyId\": 100000091630921,\n            \"StartDate\": \"2022-10-01\",\n            \"Status\": \"ORA_ACTIVE\"\n        },\n        {\n            \"SubscriptionId\": 300000663766622,\n            \"SubscriptionNumber\": \"020-C100445_1000_XC\",\n            \"BusinessUnitId\": 300000005793193,\n            \"BusinessUnitName\": \"United_States_BU\",\n            \"LegalEntityId\": 300000356116885,\n            \"LegalEntityName\": \"Colo Properties Atlanta, LLC\",\n            \"SubscriptionProfileId\": 300000376076235,\n            \"SubscriptionProfileName\": \"DLR Monthly Calendar Month-to-Month\",\n            \"PrimaryPartyId\": 100000091630921,\n            \"StartDate\": \"2022-10-01\",\n            \"Status\": \"ORA_ACTIVE\"\n        }\n    ],\n    \"count\": 2,\n    \"hasMore\": false,\n    \"limit\": 25,\n    \"offset\": 0,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions\",\n            \"name\": \"subscriptions\",\n            \"kind\": \"collection\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Lookup active cross connect subscription by customer and location Copy",
+			"id": "3dd8fec1-8cd7-4fb9-9de5-896018ba918e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "REST-Framework-Version",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptions?q=SubscriptionNumber = '150-C143350_XC_v2'&onlyData=true&fields=SubscriptionId,SubscriptionNumber,BusinessUnitId,BusinessUnitName,LegalEntityId,LegalEntityName,SubscriptionProfileId,SubscriptionProfileName,PrimaryPartyId,StartDate,Status",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptions"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "SubscriptionNumber = '150-C143350_XC_v2'",
+							"description": "or draft (to verify subscription manager)"
+						},
+						{
+							"key": "onlyData",
+							"value": "true"
+						},
+						{
+							"key": "fields",
+							"value": "SubscriptionId,SubscriptionNumber,BusinessUnitId,BusinessUnitName,LegalEntityId,LegalEntityName,SubscriptionProfileId,SubscriptionProfileName,PrimaryPartyId,StartDate,Status"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "2c6669f3-c194-4d24-a6f0-9ef304372ec7",
+					"name": "Lookup active cross connect subscription by customer and location",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "REST-Framework-Version",
+								"value": "2",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptions?q=(CustomerLocation_c='020-C100445' and Status='ORA_Active' and Location_c='ATL013') and SubscriptionNumber like '%XC%'&onlyData=true&fields=SubscriptionId,SubscriptionNumber,BusinessUnitId,BusinessUnitName,LegalEntityId,LegalEntityName,SubscriptionProfileId,SubscriptionProfileName,PrimaryPartyId,StartDate,Status",
+							"host": [
+								"{{siteURL}}"
+							],
+							"path": [
+								"crmRestApi",
+								"resources",
+								"latest",
+								"subscriptions"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "(CustomerLocation_c='020-C100445' and Status='ORA_Active' and Location_c='ATL013') and SubscriptionNumber like '%XC%'",
+									"description": "or draft (to verify subscription manager)"
+								},
+								{
+									"key": "onlyData",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "fields",
+									"value": "SubscriptionId,SubscriptionNumber,BusinessUnitId,BusinessUnitName,LegalEntityId,LegalEntityName,SubscriptionProfileId,SubscriptionProfileName,PrimaryPartyId,StartDate,Status",
+									"type": "text"
+								},
+								{
+									"key": "REST-Framework-Version",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/vnd.oracle.adf.resourcecollection+json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "457"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "origin"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Location",
+							"value": ""
+						},
+						{
+							"key": "X-ORACLE-DMS-RID",
+							"value": "0:5"
+						},
+						{
+							"key": "Link",
+							"value": "<https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions>;rel=\"self\";kind=\"collection\";name=\"subscriptions\""
+						},
+						{
+							"key": "X-ORACLE-DMS-ECID",
+							"value": "005z5n1o4UyBHBVpq0O5yY00071k0000ZG"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						},
+						{
+							"key": "REST-Framework-Version",
+							"value": "2"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Language",
+							"value": "en"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 23 May 2023 13:56:42 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "AKGRN",
+							"value": "0.946adc17.1684850201.15c22bce"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"items\": [\n        {\n            \"SubscriptionId\": 300000663766616,\n            \"SubscriptionNumber\": \"020-C100445_0200_XC\",\n            \"BusinessUnitId\": 300000005793193,\n            \"BusinessUnitName\": \"United_States_BU\",\n            \"LegalEntityId\": 300000356116885,\n            \"LegalEntityName\": \"Colo Properties Atlanta, LLC\",\n            \"SubscriptionProfileId\": 300000376076235,\n            \"SubscriptionProfileName\": \"DLR Monthly Calendar Month-to-Month\",\n            \"PrimaryPartyId\": 100000091630921,\n            \"StartDate\": \"2022-10-01\",\n            \"Status\": \"ORA_ACTIVE\"\n        },\n        {\n            \"SubscriptionId\": 300000663766622,\n            \"SubscriptionNumber\": \"020-C100445_1000_XC\",\n            \"BusinessUnitId\": 300000005793193,\n            \"BusinessUnitName\": \"United_States_BU\",\n            \"LegalEntityId\": 300000356116885,\n            \"LegalEntityName\": \"Colo Properties Atlanta, LLC\",\n            \"SubscriptionProfileId\": 300000376076235,\n            \"SubscriptionProfileName\": \"DLR Monthly Calendar Month-to-Month\",\n            \"PrimaryPartyId\": 100000091630921,\n            \"StartDate\": \"2022-10-01\",\n            \"Status\": \"ORA_ACTIVE\"\n        }\n    ],\n    \"count\": 2,\n    \"hasMore\": false,\n    \"limit\": 25,\n    \"offset\": 0,\n    \"links\": [\n        {\n            \"rel\": \"self\",\n            \"href\": \"https://hdep-dev1.fa.us2.oraclecloud.com:443/crmRestApi/resources/11.13.18.05/subscriptions\",\n            \"name\": \"subscriptions\",\n            \"kind\": \"collection\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Creat a subscirption",
+			"id": "a51abbb1-d95c-4aa9-9fb0-9059e75be4af",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SubscriptionNumber\": \"000-C00745_XC_Test_04272023_v1\", //process generate - fomular \"customer location\" + \"_\" +\"XC\"\r\n    \"BusinessUnitId\": 300000005793193,\r\n    \"LegalEntityId\": 300000356117053,\r\n    \"SubscriptionProfileId\": 300000376076235,\r\n    \"PrimaryPartyId\": 100000091630658,\r\n    \"Currency\": \"USD\",\r\n    \"StartDate\": \"2023-04-01\",\r\n    //\"EndDate\": \"2024-12-31\",\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    \"BillToAccountId\": 100000093309558,\r\n    //\"BillToAccountNumber\": \"241524\",\r\n    \"BillToSiteUseId\": 100000093319158,\r\n    \"ShipToParty\": 100000091630658,\r\n    //\"ShipToPartyName\": \"Vodafone US Operations Inc.\",\r\n    \"ShipToPartySiteId\": 100000112664520,\r\n    //\"ShipToSite\": \"60 HUDSON STREET,NEW YORK, NEW YORK, NY, 10013\", \r\n    \"PaymentTermsName\": \"Due 1st of Mon\", //\"Immediate\" \r\n    //DLR\r\n    \"Location_c\":\"JFK12\",\r\n    \"CustomerLocation_c\":\"000-C00745\", \r\n    \"ProductCategory_c\":\"CROSS_CONNECT\", //static\r\n    \"GenerateBillingSchedule\": \"Y\", //static\r\n    \"DefaultBilltoContact_Id_c\": \"300000406827558\",\r\n    \"DefaultBilltoContact_c\": \"Accounts Payable NetX Collo\",\r\n    \"DefaultBilltoContactRoleId_c\": \"300000406827562\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions"
+			},
+			"response": []
+		},
+		{
+			"name": "Creat a subscirption Copy",
+			"id": "f6235b80-6190-4f53-95db-67cb5a17e29a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"SubscriptionNumber\": \"150-C143350_XC\",\r\n    \"BusinessUnitId\": 300000005793193,\r\n    \"LegalEntityId\": 300000356116983,\r\n    \"SubscriptionProfileId\": \"300000376076235\",\r\n    \"PrimaryPartyId\": \"100000091628908\",\r\n    \"Currency\": \"USD\",\r\n    \"StartDate\": \"\",\r\n    \"BillToAccountId\":\"100000093310744\",\r\n    \"BillToSiteUseId\": \"100000093315815\",\r\n    \"ShipToParty\": \"\",\r\n    \"ShipToPartySiteId\":\"100000112663623\",\r\n    \"PaymentTermsName\": \"Immediate\" ,\r\n    \"Location_c\":\"DFW010\",\r\n    \"CustomerLocation_c\":\"150-C143350\", \r\n    \"ProductCategory_c\":\"CROSS_CONNECT\",\r\n    \"GenerateBillingSchedule\": \"Y\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions"
+			},
+			"response": []
+		},
+		{
+			"name": "Create an install base asset",
+			"id": "2dbe6f80-f0dd-4962-8752-8baf156c95d5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"AssetNumber\": \"130-C14297-XC-809827-INCCC-Fiber-JH-TEST1\", //need to be unique Use product PUID \r\n    //\"OperatingOrganizationName\": \"DLR Item Master Org\",\r\n    \"ItemNumber\": \"INCCC\", \r\n    //\"ItemId\": 100000092407466, //required, TBC\r\n    \"Description\": \"Cross Connect - SCCFBR00844049\", //product description and FNT asset id\r\n    \"Quantity\": 1,\r\n    //\"DESCRIPTION_ASSET_FLAG\":\"Y\",\r\n    \"OperatingOrganizationCode\": \"IMO\",\r\n    \"OperatingOrganizationId\": 300000330053639,\r\n    \"UOMCode\": \"EA\",\r\n    \"CurrentLocationContextCode\": \"ORA_CUSTOMER\",\r\n    \"CurrentLocationContext\": \"Customer Address\",\r\n    \"CustomerSiteNumber\": \"24019001\", //TBC\r\n    \"SoldByBusinessUnitId\": 300000005793193, //TBC name or number\r\n    \"CustomerNumber\": \"440056\",\r\n    \"SalesOrderNumber\": \"809827\" //case number\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/fscmRestApi/resources/latest/installedBaseAssets",
+				"description": "Oracle reference [https://docs.oracle.com/en/cloud/saas/supply-chain-and-manufacturing/23b/fasrp/api-maintenance-installed-base-assets.html](https://docs.oracle.com/en/cloud/saas/supply-chain-and-manufacturing/23b/fasrp/api-maintenance-installed-base-assets.html)"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a subscription product",
+			"id": "e4b2fff1-9769-4e09-b9cb-ff089bf72356",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SubscriptionNumber\": \"{{SubscriptionNumber}}\", //process generate\r\n    \"LineNumber\": \"1\", //process generate \"case number\" + \"line record (consider auto generated line number in SFDC)\" \r\n    \"SubscriptionProductPuid\": \"000-C00745_XC_Test_0303202-1\", //process generate \"subscription number\" + \"line number\" + \"oracle product name\" + \"medium/description\"\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    //\"SalesProductType\": \"SUBSCRIPTION\",\r\n    //\"Description\": \"QP Item for SPT Subscription\",\r\n    //\"InventoryItemId\": 300100012368232,\r\n    //\"ItemUnitOfMeasure\": \"Ea\",\r\n    \"ProductName\": \"INCOP\",\r\n    //\"Description\": \"One Pack - Fiber\",\r\n    \"ProductAttribute_c\":\"One Pack - Fiber\", //issue \"Unable to parse the provided payload\"\r\n    \"Quantity\": 1,\r\n    \"StartDate\": \"2023-02-13\", //bill date\r\n    //\"EndDate\": \"2019-12-25\"\r\n    \"Status\": \"ORA_DRAFT\",\r\n    \"Currency\": \"USD\",\r\n    \"BillingFrequency\":\"Mon\",\r\n    \"GenerateBillingSchedule\": \"Y\",\r\n    \"CaseNumberProjectID_c\": \"\",\r\n    \"AssetIdentificationNumber_c\": \"\",\r\n    \"PurchaseOrderNumber_c\": \"\",\r\n    \"InstallBaseAssetID_c\": \"\", //need to create Install base asset first\r\n    \"EnablePricingTermsFlag\": \"N\",\r\n    \"FulfillmentDate_c\": \"\" //bill date\r\n    //ProductAttribute_c \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a product charge",
+			"id": "14bd164b-1d8f-4a7c-ba98-fb463a219786",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ChargeDefinition\": \"MRC\",\r\n    \"ChargePuid\": \"150-C143350_XC_MRC_01\",\r\n    \"PricePeriodicity\": \"Mon\",\r\n    \"PriceType\": \"ORA_RECURRING\", \r\n    \"ChargeName\": \"MRC\",\r\n    \"UnitListPrice\": 350 ,\r\n    \"ExternalParentKey\": \"XC-PRE-004\",\r\n    \"ExternalKey\":\"MRC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/150-C143350_XC-V2_1_INCPPT_DS1 Ordering Party/child/charges"
+			},
+			"response": []
+		},
+		{
+			"name": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/150-C143350_XC_1_INCPPT",
+			"id": "1b38a0ea-4f79-4a65-a72c-bb172f342083",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/150-C143350_XC_1_INCPPT"
+			},
+			"response": []
+		},
+		{
+			"name": "{{siteURL}}/crmRestApi/resources/latest/subscriptions",
+			"id": "60729389-4106-4da3-b617-e5c8523352c1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "REST-Framework-Version",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptions?fields=SubscriptionId,SubscriptionNumber&q=SubscriptionNumber = '020-C00061_XC'&onlyData=true",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptions"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "SubscriptionId,SubscriptionNumber"
+						},
+						{
+							"key": "q",
+							"value": "SubscriptionNumber = '020-C00061_XC'"
+						},
+						{
+							"key": "onlyData",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "{{siteURL}}/crmRestApi/resources/latest/subscriptions/150-C143350_XC-V1",
+			"id": "b45a5dc1-365e-478e-8333-d291d0d5e03e",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions/150-C143350_XC_v2"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all subscription products subscriptionNo param",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "590998fe-5c82-4abe-b2fc-1b6ca93ea3f9",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "2ce7a830-3d1d-402e-8da5-e3b6687b2c49",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "REST-Framework-Version",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts?fields=SubscriptionNumber,SubscriptionProductPuid,LineNumber,Status,StartDate,ProductName,ProductAttribute_c,Quantity,AssetIdentificationNumber_c,CaseNumberProjectID_c,Currency,FutureProductCloseDate_c,ProductCloseInfo_c,BillToAccountDescription,BillToAccountNumber,ShipToPartySiteName,BillToPartyName,GenerateBillingSchedule&onlyData=true&q=CustomerLocation_c='020-C00061' and Location_c='ATL013' and SubscriptionNumber = '020-C00061_XC'  and (Status='ORA_ACTIVE' OR 'ORA_DRAFT' OR 'ORA_UNDER_AMENDMENT' OR Status='ORA_HOLD') OR 'ORA_UNDER_AMENDMENT' OR Status='ORA_HOLD')",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptionProducts"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "SubscriptionNumber,SubscriptionProductPuid,LineNumber,Status,StartDate,ProductName,ProductAttribute_c,Quantity,AssetIdentificationNumber_c,CaseNumberProjectID_c,Currency,FutureProductCloseDate_c,ProductCloseInfo_c,BillToAccountDescription,BillToAccountNumber,ShipToPartySiteName,BillToPartyName,GenerateBillingSchedule"
+						},
+						{
+							"key": "onlyData",
+							"value": "true"
+						},
+						{
+							"key": "q",
+							"value": "CustomerLocation_c='020-C00061' and Location_c='ATL013' and SubscriptionNumber = '020-C00061_XC'  and (Status='ORA_ACTIVE' OR 'ORA_DRAFT' OR 'ORA_UNDER_AMENDMENT' OR Status='ORA_HOLD') OR 'ORA_UNDER_AMENDMENT' OR Status='ORA_HOLD')"
+						}
+					]
+				},
+				"description": "To retreive all the subscription products"
+			},
+			"response": []
+		},
+		{
+			"name": "products under subscription",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "590998fe-5c82-4abe-b2fc-1b6ca93ea3f9",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "e96e1faf-a823-424d-9b95-0d4020b33c2a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "REST-Framework-Version",
+						"value": "2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptions/000-C00023_0901_XC/child/products?offset=0&onlyData=true&q=ProductName in ('INCTPCC','INCCC','INCOP','INCPPT','INCTCPT','INCLOA','SRVEF')&limit=200&totalResults=true&fields=SubscriptionNumber,SubscriptionProductPuid,LineNumber,Status,StartDate,ProductName,ProductAttribute_c,Quantity,AssetIdentificationNumber_c,CaseNumberProjectID_c,BillToAccountDescription,ShipToPartySiteId,ProductAttribute_c,Currency",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptions",
+						"000-C00023_0901_XC",
+						"child",
+						"products"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "onlyData",
+							"value": "true"
+						},
+						{
+							"key": "q",
+							"value": "ProductName in ('INCTPCC','INCCC','INCOP','INCPPT','INCTCPT','INCLOA','SRVEF')"
+						},
+						{
+							"key": "limit",
+							"value": "200"
+						},
+						{
+							"key": "totalResults",
+							"value": "true"
+						},
+						{
+							"key": "fields",
+							"value": "SubscriptionNumber,SubscriptionProductPuid,LineNumber,Status,StartDate,ProductName,ProductAttribute_c,Quantity,AssetIdentificationNumber_c,CaseNumberProjectID_c,BillToAccountDescription,ShipToPartySiteId,ProductAttribute_c,Currency"
+						}
+					]
+				},
+				"description": "To retreive all the subscription products"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a subscription product Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08c73adc-8720-4542-9ed1-e582c302f737",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "89fc9fa2-131c-45bc-b1c5-a08326218a27",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FutureProductCloseDate_c\": \"{{futureProductCloseDate}}\",\r\n    \"ProductCloseInfo_c\": \"{{productCloseInfo}}\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/{{subscriptionProductPuid}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Activate Subscription",
+			"id": "1720862b-19aa-4ebe-8900-aebf457031b4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/vnd.oracle.adf.action+json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n{\r\n    \"Status\": \"ORA_Active\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions/020-C00061-XC-00859017/action/activate"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{serviceAccountPassword}}",
+			"username": "{{serviceAccount}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "24eb84d7-08c5-4a64-87a8-df83be206056",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6514b87f-1670-4b20-a95f-2a11e257935e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
