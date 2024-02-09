@@ -1,0 +1,246 @@
+{
+	"info": {
+		"_postman_id": "e86db9d7-5bd0-4475-9acc-6b3091ee0b19",
+		"name": "Set Subscription Product Future Close Date",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Update a subscription product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08c73adc-8720-4542-9ed1-e582c302f737",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "f7f6b092-748e-4bfe-9867-69c2c38994dc",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"FutureProductCloseDate_c\": \"{{futureProductCloseDate}}\",\r\n    \"ProductCloseInfo_c\": \"{{productCloseInfo}}\" \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/{{subscriptionProductPuid}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all subscription products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "590998fe-5c82-4abe-b2fc-1b6ca93ea3f9",
+						"exec": [
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"400 Bad Request\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"404 Not Found\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"500 internal server error\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});\r",
+							"\r",
+							"//Asssign the API Response to jsonResponse\r",
+							"let jsonResponse = pm.response.json();\r",
+							"//check if the response is valid json\r",
+							"pm.test(\"Response should be a parsable JSON\", function() {\r",
+							"    pm.expect(jsonResponse).to.be.ok;\r",
+							"});\r",
+							"pm.test(\"Response body should be an object\", function() {\r",
+							"    pm.expect(jsonResponse).to.be.an('object');\r",
+							"});\r",
+							"//Chekc if response time is less than 2000 ms\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+							"});\r",
+							"   \r",
+							"//Get the item count \r",
+							"let itemCount = jsonResponse.count;\r",
+							"pm.test(\"count\" + itemCount)\r",
+							" for (var i = 0; i < jsonResponse.items.length;  i++)\r",
+							"    {  \r",
+							"    pm.test(\"SubscriptionNumber\" + ':' + jsonResponse.items[i].SubscriptionNumber + '\\n' +  \"LineNumber\" + ':' + jsonResponse.items[i].LineNumber);\r",
+							"    pm.collectionVariables.set(\"SMProductPuid\", jsonResponse.items[i].SubscriptionProductPuid) \r",
+							"    pm.collectionVariables.set(\"ORAStatus\" , jsonResponse.items[i].Status)\r",
+							"   //get the value of the \"base_url\" and puid variable from the environment and collection variables\r",
+							"    const baseUrl  = pm.environment.get(\"siteURL\");\r",
+							"    const SMPuid = pm.collectionVariables.get(\"SMProductPuid\");\r",
+							"    const Statuscheck = pm.collectionVariables.get(\"ORAStatus\");\r",
+							"    console.log(\"ORAStatus\" + ':' + Statuscheck);\r",
+							"    // construct the URL with the variable value\r",
+							"    const url = `${baseUrl}/crmRestApi/resources/latest/subscriptionProducts/${SMPuid}`;\r",
+							"    var username = pm.environment.get(\"serviceAccount\");\r",
+							"    var password = pm.environment.get(\"serviceAccountPassword\");\r",
+							"    var auth = btoa(username + \":\" + password);\r",
+							"   \r",
+							"//Send Request to Update a Subcription product only if ORAstatus is active\r",
+							"if (Statuscheck!= 'ORA_CLOSED')\r",
+							"   {\r",
+							"pm.sendRequest({\r",
+							"    url: url,\r",
+							"    method: 'PATCH',\r",
+							"    header: {\r",
+							"        'Accept': 'application/json',\r",
+							"        'Content-Type': 'application/json',\r",
+							"        'Authorization': \"Basic \" + auth,\r",
+							"      },   \r",
+							"    body: {\r",
+							"        mode: 'raw',\r",
+							"        raw: JSON.stringify({\r",
+							"        \"FutureProductCloseDate_c\": pm.collectionVariables.get(\"futureProductCloseDate\"),\r",
+							"        \"ProductCloseInfo_c\": pm.collectionVariables.get(\"productCloseInfo\")\r",
+							"        })\r",
+							"    }\r",
+							"}, function (err, res) {\r",
+							"    \r",
+							"\r",
+							"});\r",
+							"}\r",
+							"    \r",
+							"    //Proceed further only if the item count is >=1\r",
+							"if (itemCount >=1)\r",
+							"   {\r",
+							"     pm.test(\"Body matches string\", function () {\r",
+							"     pm.expect(pm.response.text()).to.include(\"SubscriptionNumber\");\r",
+							"});\r",
+							"\r",
+							"   }\r",
+							"\r",
+							"   }"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "60d128aa-d024-41b9-b77a-cc787e6ae301",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts?q=SubscriptionNumber = '020-C00311-XC'",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptionProducts"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "SubscriptionNumber,SubscriptionProductPuid,LineNumber,Status,StartDate,ProductName,ProductAttribute_c,Quantity,AssetIdentificationNumber_c,CaseNumberProjectID_c,Currency,FutureProductCloseDate_c,ProductCloseInfo_c,BillToAccountDescription,BillToAccountNumber,ShipToPartySiteName,BillToPartyName",
+							"disabled": true
+						},
+						{
+							"key": "onlyData",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "q",
+							"value": "SubscriptionNumber = '020-C00311-XC'"
+						}
+					]
+				},
+				"description": "To retreive all the subscription products"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{serviceAccountPassword}}",
+			"username": "{{serviceAccount}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e553d0fd-ce50-4ec3-a794-588deeb62617",
+				"type": "text/javascript",
+				"exec": [
+					"console.clear();",
+					"console.log(\"Run \"); ",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a2394856-0cb0-493e-989d-59e7534a8f1b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "fntAssetId",
+			"value": "SCCFBR00801196",
+			"type": "string"
+		},
+		{
+			"key": "subscriptionProductPuid",
+			"value": ""
+		},
+		{
+			"key": "productCloseInfo",
+			"value": "Disconnect~ORA_PRORATE_WITH_CREDIT",
+			"type": "string"
+		},
+		{
+			"key": "futureProductCloseDate",
+			"value": "2023-02-28",
+			"type": "string"
+		},
+		{
+			"key": "SMProductPuid",
+			"value": ""
+		},
+		{
+			"key": "ORA Status",
+			"value": ""
+		},
+		{
+			"key": "ORAStatus",
+			"value": ""
+		}
+	]
+}
