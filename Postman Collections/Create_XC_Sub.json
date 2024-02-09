@@ -1,0 +1,287 @@
+{
+	"info": {
+		"_postman_id": "35ec3fc2-7fb6-46f5-9d41-cb4973f8d052",
+		"name": "Create XC subscription",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Creat a cross connect subscirption",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f19325b0-2963-4297-8c55-b070fcaafa64",
+						"exec": [
+							"//set subscription number\r",
+							"pm.collectionVariables.set(\"subscriptionNumber\",\"000-C00745_XC_Test_03072003\")\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "bae45a24-88e7-451b-9ebb-0b4ddaee8900",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SubscriptionNumber\": \"{{subscriptionNumber}}\",\r\n    \"BusinessUnitId\": 300000005793193,\r\n    \"LegalEntityId\": 300000356117053,\r\n    \"SubscriptionProfileId\": 300000376076235,\r\n    \"PrimaryPartyId\": 100000091630658,\r\n    \"Currency\": \"USD\",\r\n    \"StartDate\": \"2023-03-10\",\r\n    //\"EndDate\": \"2024-12-31\",\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    \"BillToAccountId\": 100000093309558,\r\n    \"BillToAccountNumber\": \"241524\",\r\n    \"BillToSiteUseId\": 100000093319158,\r\n    //\"ShipToParty\": 100000091630658,\r\n    \"ShipToPartyName\": \"Vodafone US Operations Inc.\",\r\n    \"ShipToPartySiteId\": 100000112664520,\r\n    //\"ShipToSite\": \"60 HUDSON STREET,NEW YORK, NEW YORK, NY, 10013\",\r\n    \"PaymentTermsName\": \"Due 1st of Mon\", //\"Immediate\"\r\n    //DLR\r\n    \"Location_c\":\"JFK12\",\r\n    \"CustomerLocation_c\":\"000-C00745\",\r\n    \"ProductCategory_c\":\"CROSS_CONNECT\",\r\n    \"GenerateBillingSchedule\": \"Y\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptions"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a cross connect subscription product",
+			"id": "8bb27076-b19d-4cb5-9f6d-e482f90a7219",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SubscriptionNumber\": \"{{subscriptionNumber}}\",\r\n    \"LineNumber\": \"4\",\r\n    \"SubscriptionProductPuid\": \"{{subscriptionNumber}}-4\",\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    \"SalesProductType\": \"SUBSCRIPTION\",\r\n    \"ProductName\": \"INCOP\",\r\n    //\"Description\": \"One Pack - Fiber\",\r\n    //\"ProductAttribute_c\":\"One Pack - Fiber\",\r\n    \"Quantity\": 1,\r\n    \"StartDate\": \"2023-03-13\",\r\n    \"EndDate\": null,\r\n    \"Status\": \"ORA_DRAFT\",\r\n    \"Currency\": \"USD\",\r\n    \"BillingFrequency\":\"Mon\",\r\n    \"GenerateBillingSchedule\": \"Y\",\r\n    \"CaseNumberProjectID_c\": \"case-03072023-1\",\r\n    \"AssetIdentificationNumber_c\": \"SCCM03072023-1\",\r\n    \"PaymentTermsId\": 300000373737870\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a cross connect subscription product Copy",
+			"id": "6f10306a-f00b-496a-b924-ec071fea8e6d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"SubscriptionNumber\": \"{{subscriptionNumber}}\",\r\n    \"LineNumber\": \"4\",\r\n    \"SubscriptionProductPuid\": \"{{subscriptionNumber}}-4\",\r\n    //\"DefinitionOrganizationId\": 300000330053639,\r\n    \"SalesProductType\": \"SUBSCRIPTION\",\r\n    \"ProductName\": \"INCOP\",\r\n    //\"Description\": \"One Pack - Fiber\",\r\n    //\"ProductAttribute_c\":\"One Pack - Fiber\",\r\n    \"Quantity\": 1,\r\n    \"StartDate\": \"2023-03-13\",\r\n    \"EndDate\": null,\r\n    \"Status\": \"ORA_DRAFT\",\r\n    \"Currency\": \"USD\",\r\n    \"BillingFrequency\":\"Mon\",\r\n    \"GenerateBillingSchedule\": \"Y\",\r\n    \"CaseNumberProjectID_c\": \"case-03072023-1\",\r\n    \"AssetIdentificationNumber_c\": \"SCCM03072023-1\",\r\n    \"PaymentTermsId\": 300000373737870\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a charge",
+			"id": "fcf3d390-a584-4ef7-86bb-b82512c71c20",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    //\"BillLineId\": null,\r\n    \"ChargeDefinition\": \"MRC\",\r\n    \"ChargePuid\": \"000-C00745_XC_Test_03072003-4-MRC-1\",\r\n    \"PricePeriodicity\": \"Mon\",\r\n    \"PriceType\": \"ORA_RECURRING\",\r\n    \"ChargeName\": \"MRC\",\r\n    \"UnitListPrice\": 200,\r\n    //\"TieredFlag\": true\r\n    \"ExternalParentKey\": \"INCOP\",\r\n    \"ExternalKey\":\"MRC\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/000-C00745_XC_Test_03072003-4/child/charges"
+			},
+			"response": []
+		},
+		{
+			"name": "Get all subscription products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "40b73c6a-98bd-411a-8065-84d1a4a3b32f",
+						"exec": [
+							"//validate status code. if it's good, then set puid into collection variable\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"    let jsonResponse = pm.response.json();\r",
+							"    let smProdPuid = jsonResponse.items[0].SubscriptionProductPuid;\r",
+							"    console.log(smProdPuid);\r",
+							"\r",
+							"    pm.collectionVariables.set(\"subscriptionProductPuid\", smProdPuid);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "162e1e11-1c82-4d11-bc36-aabe8552c46c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts?onlyData=true&q=AssetIdentificationNumber_c=SCCM03072023-1",
+					"host": [
+						"{{siteURL}}"
+					],
+					"path": [
+						"crmRestApi",
+						"resources",
+						"latest",
+						"subscriptionProducts"
+					],
+					"query": [
+						{
+							"key": "fields",
+							"value": "SubscriptionNumber,SubscriptionProductPuid,LineNumber,Status,StartDate,ProductName,ProductAttribute_c,Quantity,AssetIdentificationNumber_c,CaseNumberProjectID_c,Currency,FutureProductCloseDate_c,ProductCloseInfo_c,BillToAccountDescription,BillToAccountNumber,ShipToPartySiteName,BillToPartyName",
+							"disabled": true
+						},
+						{
+							"key": "onlyData",
+							"value": "true"
+						},
+						{
+							"key": "q",
+							"value": "AssetIdentificationNumber_c=SCCM03072023-1"
+						}
+					]
+				},
+				"description": "To retreive all the subscription products"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a subscription product",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "11d2177f-5202-49a7-b870-384cea198288",
+						"exec": [
+							"require(\"btoa\");\r",
+							"\r",
+							"var testvalue = pm.collectionVariables.get(\"transactionDescription\");\r",
+							"console.log(testvalue);\r",
+							"\r",
+							"pm.collectionVariables.set(\"transactionDescription\", btoa(testvalue)); \r",
+							"console.log(pm.collectionVariables.get(\"transactionDescription\"));\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "26e72c43-8780-4495-8860-d483f5be9c9b",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    //\"FutureProductCloseDate_c\": \"{{futureProductCloseDate}}\",\r\n    //\"ProductCloseInfo_c\": \"{{productCloseInfo}}\" //\r\n    //\"CaseNumberProjectID_c\": \"case-03072023-4\",\r\n    //\"AssetIdentificationNumber_c\": \"SCCM03072023-4\",\r\n    //\"Quantity\": 4\r\n    \"ProductAttribute_c\":{{transactionDescription}}\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{siteURL}}/crmRestApi/resources/latest/subscriptionProducts/111-C143542_XC_SUM_TEST-PRDT-128632"
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": {
+			"password": "{{serviceAccountPassword}}",
+			"username": "{{serviceAccount}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "15bd0dab-c663-4bd7-8abd-fabffddfe7cc",
+				"type": "text/javascript",
+				"exec": [
+					"console.clear();",
+					"console.log(\"Run \"); ",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "74c90a5f-1aee-470a-a949-5d1cd787e3af",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "fntAssetId",
+			"value": "SCCFBR00801196",
+			"type": "string"
+		},
+		{
+			"key": "subscriptionProductPuid",
+			"value": ""
+		},
+		{
+			"key": "productCloseInfo",
+			"value": "Disconnect~ORA_PRORATE_WITH_CREDIT",
+			"type": "string"
+		},
+		{
+			"key": "futureProductCloseDate",
+			"value": "2023-02-28",
+			"type": "string"
+		},
+		{
+			"key": "subscriptionNumber",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "transactionDescription",
+			"value": "Premium Port - Ethernet",
+			"type": "string"
+		}
+	]
+}
