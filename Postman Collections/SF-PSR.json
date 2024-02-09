@@ -1,0 +1,122 @@
+{
+	"info": {
+		"_postman_id": "eb36b097-fca7-448f-964d-13d2fd3a457a",
+		"name": "Salesforce REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Access Token",
+			"id": "d2b246d7-1baa-4e8c-a6a9-9009259bdd0a",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "client_id",
+							"value": "3MVG9_I_oWkIqLrl7h.HM0nqegTuqLWhDn42JpJEP0H2GS5fHMqvGO5AvNsHBLnpIWuZxR9AoYCKeGbRuSNBw",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "51608298E2DBE965D176116B0D78E1DD5193428A397CE8D6EEA111C23D8F8A9A",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "rvelmurugan@digitalrealty.com.glblcdm",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "User@123",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": "https://digitalrealty--glblcdm.my.salesforce.com/services/oauth2/token"
+			},
+			"response": []
+		},
+		{
+			"name": "Create PSR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c00b9232-c995-44ce-82d5-b8fd7539e868",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "cbe5ea97-42a2-422f-82f5-8249a3147a18",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D010000000WBe!AQ8AQApmxoVnkrISLjNK2uYBGcMFdOAlY8xNaT6UTSpay6AKmmfCVu42Wwt2b5u2Vsjc14E9dBWJUG38uRREpTMmMbsRHagw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"billDate\" : \"2023-03-07\",\r\n    \"source\" : \"COLO Salesforce\",\r\n    \"sourceRef\" : \"50003000006FCWT\",\r\n    \"ticket\" : \"01799858\",\r\n    \"buildingCode\" : \"DFW10\",\r\n    \"customer\" : \"Charter Comms Operating LLC\",\r\n    \"customerId\" : \"150-C143350\",\r\n    \"assetId\" : \"ASSET101\",\r\n    \"productName\" : \"Cross Connect\",\r\n    \"productType\" : \"Disconnect\",\r\n    \"contactName\" : \"Service User\",\r\n    \"contactEmail\" : \"svc_nnocip@charter.com.invalid\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://digitalrealty--glblcdm.sandbox.my.salesforce.com/services/apexrest/create/productservicerequest"
+			},
+			"response": []
+		},
+		{
+			"name": "Create QR",
+			"id": "1a554d5c-cef9-48b1-b5f3-eedfc3c14e7d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 00D010000000WBe!AQ8AQMtdLHPVeOSqLnP3f7Fb4jx.CmlsNUp489VI6RsBGFn9yykhc3y27pQ.pNQxLpkTURi3bP2yH4mzHsKuT5QrKD73f3oT",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"assetKey\" : \"Asset123\",\r\n    \"deploymentId\" : \"Deploy123\",\r\n    \"transactionType\" : \"Disconnect\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://digitalrealty--glblcdm.sandbox.my.salesforce.com/services/apexrest/create/quoterequest"
+			},
+			"response": []
+		}
+	]
+}
